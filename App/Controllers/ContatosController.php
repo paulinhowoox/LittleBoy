@@ -60,6 +60,7 @@ class ContatosController extends Controller
             return response()->back(true);
         }
         if (Contato::create(request()->all())) {
+            session()->flash('success', 'Contato criado com sucesso');
             return response()->redirect(route('contatos.index'));
         }
         return response()->back(true);
@@ -79,11 +80,10 @@ class ContatosController extends Controller
             return response()->back(true);
         }
 
-        if ( Contato::where('id', $id)->update($data->all()) ) {
+        if (Contato::where('id', $id)->update($data->all())) {
             return response()->redirect(route('contatos.index'));
         }
         return response()->back(true);
-
     }
 
     /**

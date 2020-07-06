@@ -16,6 +16,12 @@
 <div class="container">
     <table class="table table-bordered table-striped" style="top:40px;">
         <thead>
+            <?php
+            if (session()->has('success')) : ?>
+                <div class="alert alert-success">
+                    <strong><?php echo session()->get('success'); ?></strong>
+                </div>
+            <?php endif; ?>
             <tr>
                 <th>Nome</th>
                 <th>Telefone</th>
@@ -27,7 +33,7 @@
             <?php
             if ($contatos) {
                 foreach ($contatos as $contato) {
-                    ?>
+            ?>
                     <tr>
                         <td><?php echo $contato->nome; ?></td>
                         <td><?php echo $contato->telefone; ?></td>
@@ -37,14 +43,14 @@
                             <a href="<?= route('contatos.destroy', $contato->id) ?>" class="btn btn-danger btn-sm">Excluir</a>
                         </td>
                     </tr>
-                    <?php
+                <?php
                 }
             } else {
                 ?>
                 <tr>
                     <td colspan="5">Nenhum registro encontrado</td>
                 </tr>
-                <?php
+            <?php
             }
             ?>
         </tbody>
