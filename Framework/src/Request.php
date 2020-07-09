@@ -152,13 +152,13 @@ class Request
 
     public function hasFile($key)
     {
-        return isset($this->file[$key]);
+        return isset($this->files[$key]);
     }
 
     public function file($key)
     {
         if ($this->hasFile($key)) {
-            return $this->file[$key];
+            return $this->files[$key];
         }
     }
 
