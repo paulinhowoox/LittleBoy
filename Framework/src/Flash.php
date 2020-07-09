@@ -26,7 +26,7 @@ class Flash
     public function flash($key, $message)
     {
 
-        if (isset($_SESSION['flash'][$key])) {
+        if (!isset($_SESSION['flash'][$key])) {
             $_SESSION['flash'][$key] = $message;
         }
     }
