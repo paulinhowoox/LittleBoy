@@ -81,6 +81,7 @@ class ContatosController extends Controller
         }
 
         if (Contato::where('id', $id)->update($data->all())) {
+            session()->flash('success', 'Contato atualizado com sucesso');
             return response()->redirect(route('contatos.index'));
         }
         return response()->back(true);
@@ -92,6 +93,7 @@ class ContatosController extends Controller
     public function destroy($id)
     {
         if (Contato::destroy($id)) {
+            session()->flash('success', 'Contato excluido com sucesso');
             return response()->redirect(route('contatos.index'));
         }
         return response()->back(true);
